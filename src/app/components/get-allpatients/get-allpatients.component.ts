@@ -24,6 +24,7 @@ export class GetAllpatientsComponent {
     this.service
       .deletePatient(id)
       .then((response: any) => {
+        console.log(response);
         this.utils.refresh();
       })
       .catch((err) => {
