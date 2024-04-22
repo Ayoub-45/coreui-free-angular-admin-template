@@ -4,11 +4,19 @@ import { PatientService } from '../../services/patient-service.service';
 import { Patient } from 'src/app/interfaces/patient';
 import { ButtonModule } from '@coreui/angular';
 import { UtilsComponent } from '../utils/utils.component';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-get-allpatients',
   standalone: true,
-  imports: [DatePipe, NgFor, ButtonModule, UtilsComponent],
+  imports: [
+    DatePipe,
+    NgFor,
+    ButtonModule,
+    UtilsComponent,
+    RouterLink,
+    RouterLinkActive,
+  ],
   templateUrl: './get-allpatients.component.html',
   styleUrl: './get-allpatients.component.scss',
 })

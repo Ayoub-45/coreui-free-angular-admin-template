@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
+import { ButtonDirective, ButtonModule } from '@coreui/angular';
 import { Patient } from 'src/app/interfaces/patient';
 import { PatientService } from 'src/app/services/patient-service.service';
 @Component({
   selector: 'app-add-patient',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, ButtonDirective, ButtonModule],
   templateUrl: './add-patient.component.html',
   styleUrl: './add-patient.component.scss',
 })
@@ -49,5 +50,23 @@ export class AddPatientComponent {
     if (response) {
       alert('Patient added successfully');
     }
+  }
+  clearForm() {
+    this.applyForm = new FormGroup({
+      id: new FormControl(0),
+      code: new FormControl(''),
+      nom: new FormControl(''),
+      prenom: new FormControl(''),
+      sexe: new FormControl(''),
+      gs: new FormControl(''),
+      rh: new FormControl(0),
+      race: new FormControl(''),
+      poids: new FormControl(0),
+      taille: new FormControl(0),
+      statutMatrimonial: new FormControl(''),
+      adresse: new FormControl(''),
+      profession: new FormControl(''),
+      date_Naissance: new FormControl(''),
+    });
   }
 }

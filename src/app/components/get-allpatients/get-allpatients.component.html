@@ -52,11 +52,13 @@
           (click)="deletePatient(patient.id)"
           (click)="editPatient(patient.id, patient)"
         >
-          delete
+          edit
         </span>
-        <span class="material-symbols-outlined"> edit </span>
+        <span class="material-symbols-outlined"> delete </span>
       </td>
     </tr>
   </tbody>
 </table>
-<button cButton color="dark">Add patient</button>
+<a routerLink="/add-patient" routerLinkActive="add-patient">
+  <button cButton color="dark" class="mg-10">Add patient</button>
+</a>

@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { DefaultLayoutComponent } from './layout';
 import { PatientComponent } from '../app/components/patient/patient.component';
+import { AddPatientComponent } from '../app/components/add-patient/add-patient.component';
 export const routes: Routes = [
   {
     path: '',
@@ -23,6 +24,14 @@ export const routes: Routes = [
           title: 'Patient managment',
         },
       },
+      {
+        path: 'add-patient',
+        component: AddPatientComponent,
+        data: {
+          title: 'Add patient',
+        },
+      },
+
       {
         path: 'dashboard',
         loadChildren: () =>
