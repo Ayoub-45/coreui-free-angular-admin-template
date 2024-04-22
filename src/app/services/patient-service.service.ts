@@ -105,7 +105,6 @@ export class PatientService {
     }
   }
   async deletePatient(id: number): Promise<Patient | string> {
-    console.log(id);
     try {
       const response = await fetch(`${this.url}/${id}`, {
         method: 'DELETE',
