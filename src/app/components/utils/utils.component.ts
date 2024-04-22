@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { ToastComponent } from '@coreui/angular';
 
 @Component({
   selector: 'app-utils',
   standalone: true,
-  imports: [ToastComponent],
+  imports: [],
   templateUrl: './utils.component.html',
   styleUrl: './utils.component.scss',
 })

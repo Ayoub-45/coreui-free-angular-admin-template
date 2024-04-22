@@ -1,8 +1,12 @@
-import { DatePipe, NgFor } from '@angular/common';
+import { DatePipe, NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { PatientService } from '../../services/patient-service.service';
 import { Patient } from 'src/app/interfaces/patient';
-import { ButtonModule } from '@coreui/angular';
+import {
+  ButtonModule,
+  SpinnerComponent,
+  ToastComponent,
+} from '@coreui/angular';
 import { UtilsComponent } from '../utils/utils.component';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
@@ -16,13 +20,16 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
     UtilsComponent,
     RouterLink,
     RouterLinkActive,
+    SpinnerComponent,
+    NgIf,
   ],
   templateUrl: './get-allpatients.component.html',
   styleUrl: './get-allpatients.component.scss',
 })
 export class GetAllpatientsComponent {
   public patients!: Patient[];
-  private utils!: UtilsComponent;
+  public isLoading!: Boolean;
+  private utils = new UtilsComponent();
   constructor(private service: PatientService) {
     service.fetchData().then((response) => {
       this.patients = response;

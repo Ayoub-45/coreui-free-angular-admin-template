@@ -12,53 +12,62 @@
     cursor: pointer;
   }
 </style>
-<table class="table table-striped">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">code</th>
-      <th scope="col">nom</th>
-      <th scope="col">prenom</th>
-      <th scope="col">sexe</th>
-      <th scope="col">adresse</th>
-      <th scope="col">profession</th>
-      <th scope="col">gs</th>
-      <th scope="col">rh</th>
-      <th scope="col">race</th>
-      <th scope="col">poids</th>
-      <th scope="col">taille</th>
-      <th scope="col">statutMatrimonial</th>
-      <th scope="col">date_Naissance</th>
-      <th scope="col">edit/delete</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let patient of patients">
-      <td>{{ patient.code }}</td>
-      <td>{{ patient.nom }}</td>
-      <td>{{ patient.prenom }}</td>
-      <td>{{ patient.sexe }}</td>
-      <td>{{ patient.adresse }}</td>
-      <td>{{ patient.profession }}</td>
-      <td>{{ patient.gs }}</td>
-      <td>{{ patient.rh }}</td>
-      <td>{{ patient.race }}</td>
-      <td>{{ patient.poids }}</td>
-      <td>{{ patient.taille }}</td>
-      <td>{{ patient.statutMatrimonial }}</td>
-      <td>{{ patient.date_Naissance | date }}</td>
-      <td>
-        <span
-          class="material-symbols-outlined"
-          (click)="deletePatient(patient.id)"
-          (click)="editPatient(patient.id, patient)"
-        >
-          edit
-        </span>
-        <span class="material-symbols-outlined"> delete </span>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<a routerLink="/add-patient" routerLinkActive="add-patient">
-  <button cButton color="dark" class="mg-10">Add patient</button>
-</a>
+<div *ngIf="isLoading" style="text-align: center">
+  <c-spinner></c-spinner>
+</div>
+<div *ngIf="!isLoading">
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">code</th>
+        <th scope="col">nom</th>
+        <th scope="col">prenom</th>
+        <th scope="col">sexe</th>
+        <th scope="col">adresse</th>
+        <th scope="col">profession</th>
+        <th scope="col">gs</th>
+        <th scope="col">rh</th>
+        <th scope="col">race</th>
+        <th scope="col">poids</th>
+        <th scope="col">taille</th>
+        <th scope="col">statutMatrimonial</th>
+        <th scope="col">date_Naissance</th>
+        <th scope="col">edit/delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let patient of patients">
+        <td>{{ patient.code }}</td>
+        <td>{{ patient.nom }}</td>
+        <td>{{ patient.prenom }}</td>
+        <td>{{ patient.sexe }}</td>
+        <td>{{ patient.adresse }}</td>
+        <td>{{ patient.profession }}</td>
+        <td>{{ patient.gs }}</td>
+        <td>{{ patient.rh }}</td>
+        <td>{{ patient.race }}</td>
+        <td>{{ patient.poids }}</td>
+        <td>{{ patient.taille }}</td>
+        <td>{{ patient.statutMatrimonial }}</td>
+        <td>{{ patient.date_Naissance | date }}</td>
+        <td>
+          <span
+            class="material-symbols-outlined"
+            (click)="editPatient(patient.id, patient)"
+          >
+            edit
+          </span>
+          <span
+            class="material-symbols-outlined"
+            (click)="deletePatient(patient.id)"
+          >
+            delete
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <a routerLink="/add-patient" routerLinkActive="add-patient">
+    <button cButton color="dark" class="mg-10">Add patient</button>
+  </a>
+</div>
