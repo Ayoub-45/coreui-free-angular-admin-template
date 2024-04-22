@@ -2,11 +2,7 @@ import { DatePipe, NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import { PatientService } from '../../services/patient-service.service';
 import { Patient } from 'src/app/interfaces/patient';
-import {
-  ButtonModule,
-  ToastBodyComponent,
-  ToastComponent,
-} from '@coreui/angular';
+import { ButtonModule } from '@coreui/angular';
 
 @Component({
   selector: 'app-get-allpatients',
