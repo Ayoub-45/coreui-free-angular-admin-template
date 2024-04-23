@@ -51,13 +51,8 @@
         <td>{{ patient.statutMatrimonial }}</td>
         <td>{{ patient.date_Naissance | date }}</td>
         <td>
-          <a routerLink="/patient/{{ patient.id }}/edit">
-            <span
-              class="material-symbols-outlined"
-              (click)="editPatient(patient.id, patient)"
-            >
-              edit
-            </span>
+          <a routerLink="/{{ patient.id }}/edit-patient">
+            <span class="material-symbols-outlined"> edit </span>
           </a>
           <span
             class="material-symbols-outlined"

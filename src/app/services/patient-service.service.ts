@@ -16,7 +16,6 @@ export class PatientService {
     return (await data.json()) ?? {};
   }
   async getPatientById(id: number): Promise<Patient | string> {
-    console.log(id);
     const data = await fetch(`${this.url}/${id}`);
     return (await data.json()) ?? {};
   }

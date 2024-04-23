@@ -33,7 +33,7 @@ export const routes: Routes = [
         },
       },
       {
-        path: 'edit-patient',
+        path: ':id/edit-patient',
         component: EditPatientComponent,
         data: {
           title: 'Edit patient',
