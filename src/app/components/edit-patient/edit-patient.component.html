@@ -7,7 +7,6 @@
         placeholder="code"
         formControlName="code"
         class="form-control"
-        value="{{ existedPatient.code }}"
       />
     </div>
   </div>
@@ -19,18 +18,13 @@
         placeholder="nom"
         formControlName="nom"
         class="form-control"
-        value="{{ existedPatient.nom }}"
       />
     </div>
   </div>
   <div class="form-group row">
     <label for="sexe" class="col-md-2 col-form-label">sexe</label>
     <div class="col-md-10">
-      <select
-        formControlName="sexe"
-        class="form-control"
-        [value]="existedPatient.sexe"
-      >
+      <select formControlName="sexe" class="form-control">
         <option value="male">Male</option>
         <option value="female">Female</option>
       </select>
@@ -44,8 +38,6 @@
         placeholder="address"
         formControlName="adresse"
         class="form-control"
-        value="{{ existedPatient.adresse }}
-        }}"
       />
     </div>
   </div>
@@ -56,7 +48,6 @@
         type="text"
         placeholder="prenom"
         formControlName="prenom"
-        value="{{ existedPatient.prenom }}"
         class="form-control"
       />
     </div>
@@ -70,7 +61,6 @@
         placeholder="profession"
         formControlName="profession"
         class="form-control"
-        value="{{ existedPatient.profession }}"
       />
     </div>
   </div>
@@ -83,7 +73,6 @@
         placeholder="gs"
         formControlName="gs"
         class="form-control"
-        value="{{ existedPatient.gs }}"
       />
     </div>
   </div>
@@ -96,7 +85,6 @@
         placeholder="rh"
         formControlName="rh"
         class="form-control"
-        value="{{ existedPatient.rh }}"
       />
     </div>
   </div>
@@ -109,7 +97,6 @@
         placeholder="race"
         formControlName="race"
         class="form-control"
-        value="{{ existedPatient.race }}"
       />
     </div>
   </div>
@@ -121,7 +108,6 @@
         id="poids"
         placeholder="poids"
         formControlName="poids"
-        value="{{ existedPatient.poids }}"
         class="form-control"
       />
     </div>
@@ -134,7 +120,6 @@
         id="taille"
         placeholder="taille"
         formControlName="taille"
-        value="{{ existedPatient.taille }}"
         class="form-control"
       />
     </div>
@@ -150,7 +135,6 @@
         placeholder="statutMatrimonial"
         formControlName="statutMatrimonial"
         class="form-control"
-        value="{{ existedPatient.statutMatrimonial }}"
       />
     </div>
   </div>
@@ -165,7 +149,6 @@
         placeholder="date_Naissance"
         formControlName="date_Naissance"
         class="form-control"
-        value="{{ existedPatient.date_Naissance }}"
       />
     </div>
   </div>
@@ -175,7 +158,7 @@
         cButton
         color="dark"
         type="submit"
-        (click)="editPatient(patient)"
+        (click)="submitApplication()"
         class="mg-10"
       >
         Edit patient

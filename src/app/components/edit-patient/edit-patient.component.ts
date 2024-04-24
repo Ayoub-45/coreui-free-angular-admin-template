@@ -12,25 +12,24 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './edit-patient.component.scss',
 })
 export class EditPatientComponent {
-  existedPatient!: Patient;
+  existedPatient: any = {};
   idPatient!: number;
-  fields!: [];
   patient!: Partial<Patient>;
   applyForm = new FormGroup({
-    id: new FormControl(0),
-    code: new FormControl(''),
-    nom: new FormControl(''),
-    prenom: new FormControl(''),
-    sexe: new FormControl(''),
-    gs: new FormControl(''),
-    rh: new FormControl(0),
-    race: new FormControl(''),
-    poids: new FormControl(0),
-    taille: new FormControl(0),
-    statutMatrimonial: new FormControl(''),
-    adresse: new FormControl(''),
-    profession: new FormControl(''),
-    date_Naissance: new FormControl(''),
+    id: new FormControl(this.existedPatient.id),
+    code: new FormControl(this.existedPatient.code),
+    nom: new FormControl(this.existedPatient.nom),
+    prenom: new FormControl(this.existedPatient.prenom),
+    sexe: new FormControl(this.existedPatient.sexe),
+    gs: new FormControl(this.existedPatient.gs),
+    rh: new FormControl(this.existedPatient.rh),
+    race: new FormControl(this.existedPatient.race),
+    poids: new FormControl(this.existedPatient.poids),
+    taille: new FormControl(this.existedPatient.taille),
+    statutMatrimonial: new FormControl(this.existedPatient.statutMatrimonial),
+    adresse: new FormControl(this.existedPatient.adresse),
+    profession: new FormControl(this.existedPatient.profession),
+    date_Naissance: new FormControl(this.existedPatient.date_Naissance),
   });
   constructor(
     private patientService: PatientService,
@@ -39,13 +38,20 @@ export class EditPatientComponent {
     this.router.params.subscribe((params) => {
       this.idPatient = params['id'];
     });
-    this.patientService.getPatientById(this.idPatient).then((response) => {
-      console.log(response as Patient);
-      this.existedPatient = response as Patient;
-    });
+    this.patientService
+      .getPatientById(this.idPatient)
+      .then((response) => {
+        return response;
+      })
+      .then((data) => {
+        this.existedPatient = data;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     console.log(this.existedPatient);
   }
-  async editPatient(patient: Partial<Patient>) {
+  async submitApplication() {
     console.log(this.idPatient);
     this.patient = {
       id: this.applyForm.value.id ?? this.existedPatient.id,
@@ -66,7 +72,7 @@ export class EditPatientComponent {
         this.existedPatient.statutMatrimonial,
     };
     this.patientService
-      .updatePatient(this.idPatient, patient)
+      .updatePatient(this.idPatient, this.patient)
       .then((response) => {
         console.log(response);
       })
