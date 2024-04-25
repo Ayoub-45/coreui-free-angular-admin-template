@@ -47,7 +47,6 @@ export class EditPatientComponent implements OnInit {
       date_Naissance: new Date(),
     };
   }
-
   ngOnInit(): void {
     this.patientForm = this.fb.group({
       id: [this.patient.id, Validators.required],
@@ -66,5 +65,11 @@ export class EditPatientComponent implements OnInit {
       date_Naissance: [this.patient.date_Naissance, Validators.required],
     });
   }
-  updatePatient() {}
+  async updatePatient() {
+    const updatedPatientData = this.patientForm.value;
+    const response = await this.PatientService.updatePatient(
+      this.patientId,
+      updatedPatientData
+    );
+  }
 }
