@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Patient } from 'src/app/interfaces/patient';
@@ -5,7 +6,7 @@ import { PatientService } from 'src/app/services/patient-service.service';
 @Component({
   selector: 'app-patient-dashboard',
   standalone: true,
-  imports: [],
+  imports: [DatePipe],
   templateUrl: './patient-dashboard.component.html',
   styleUrl: './patient-dashboard.component.scss',
 })
