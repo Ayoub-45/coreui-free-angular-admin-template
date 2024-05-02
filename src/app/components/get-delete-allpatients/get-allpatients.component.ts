@@ -46,4 +46,7 @@ export class GetAllpatientsComponent {
         console.error(err);
       });
   }
+  async viewPatient(id: number) {
+    return (await this.service.getPatientById(id)) ?? {};
+  }
 }

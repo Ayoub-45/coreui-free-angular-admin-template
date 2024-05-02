@@ -41,6 +41,13 @@ export const routes: Routes = [
         },
       },
       {
+        path: ':id/patient-dashboard',
+        component: DoctorComponent,
+        data: {
+          title: 'Patient Dashboard',
+        },
+      },
+      {
         path: ':id/edit-patient',
         component: EditPatientComponent,
         data: {
