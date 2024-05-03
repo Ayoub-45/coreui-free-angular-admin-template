@@ -1,32 +1,31 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Exam } from 'src/app/interfaces/exam';
 import { environment } from 'src/environments/environment.development';
-
+import { Specialite } from 'src/app/interfaces/specialite';
 @Injectable({
   providedIn: 'root',
 })
-export class ExamService {
-  url: string = environment.apiBaseUrl + '/Examen';
-  constructor(private http: HttpClient) {
+export class SpecialiteService {
+  url: string = environment.apiBaseUrl + '/Specialite';
+  constructor(private httpClient: HttpClient) {
     this.fetchData();
   }
-  async fetchData(): Promise<Exam> {
+  async fetchData() {
     const data = await fetch(this.url);
     return data.json() ?? {};
   }
-  async fetchDataById(id: number): Promise<Exam> {
+  async fetchDataById(id: number) {
     const data = await fetch(`${this.url}/${id}`);
     return data.json() ?? {};
   }
-  async addData(examen: Exam) {
+  async addSpecialite(specialite: Specialite) {
     try {
       const response = await fetch(this.url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(examen),
+        body: JSON.stringify(specialite),
       });
 
       if (!response.ok) {
@@ -43,7 +42,7 @@ export class ExamService {
       }
 
       const responseData = await response.json();
-      return responseData as Exam;
+      return responseData as Specialite;
     } catch (error) {
       return error instanceof Error ? error.message : 'Unknown error occurred';
     }
